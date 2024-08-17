@@ -9,12 +9,13 @@ const upload = multer({ dest: "images/" });
 
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static("/images"));
+app.use(express.static(path.join(__dirname, "images")));
 
 app.post("/profile", upload.single("avatar"), function (req, res, next) {
   // req.file is the `avatar` file
   // req.body will hold the text fields, if there were any
   console.info(req.file);
+  res.send("hola");
 });
 
 // Use the router for handling routes
